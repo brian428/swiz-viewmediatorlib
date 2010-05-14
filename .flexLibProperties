@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="false" version="3">
+  <includeClasses>
+    <classEntry path="com.briankotek.mediateview.MediateViewMetadataTag"/>
+    <classEntry path="com.briankotek.mediateview.MediateViewProcessor"/>
+    <classEntry path="com.briankotek.mediateview.ViewMediator"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>
