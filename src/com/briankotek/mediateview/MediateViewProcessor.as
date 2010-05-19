@@ -26,6 +26,8 @@
    }
    </code>
  *
+ * You may optionally set the values <code>mediateEventType</code> and <code>useCapture</code>. By default, the event type is "addedToStage", and useCapture is true.
+ * 
  * When a bean is torn down, references to it are removed from this processor, to allow for proper garbage collection of torn down beans.
  *
  */
@@ -46,11 +48,15 @@ package com.briankotek.mediateview
 	public class MediateViewProcessor extends BaseMetadataProcessor
 	{
 		protected static const MEDIATE_VIEW : String = "MediateView";
+		
+		public var mediateEventType : String = Event.ADDED_TO_STAGE;
+		public var useCapture : Boolean = true;
 
 		protected var mediatorsByViewType : Dictionary = new Dictionary();
 		protected var mediatorsByViewId : Dictionary = new Dictionary();
+		
 		private var dispatcherListenerAdded : Boolean = false;
-
+		
 		public function MediateViewProcessor()
 		{
 			super( [ MEDIATE_VIEW ], MediateViewMetadataTag );
@@ -109,7 +115,7 @@ package com.briankotek.mediateview
 			if ( !dispatcherListenerAdded )
 			{
 				var dispatcher : IEventDispatcher = swiz.config.defaultDispatcher == SwizConfig.LOCAL_DISPATCHER ? swiz.dispatcher : swiz.globalDispatcher;
-				dispatcher.addEventListener( Event.ADDED_TO_STAGE, mediateView, true, 0, true );
+				dispatcher.addEventListener( mediateEventType, mediateView, useCapture, 0, true );
 				dispatcherListenerAdded = true;
 			}
 		}
